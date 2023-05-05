@@ -13,7 +13,12 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  SimpleGrid,Image,Stack,Heading,Divider,ButtonGroup
+  SimpleGrid,
+  Image,
+  Stack,
+  Heading,
+  Divider,
+  ButtonGroup,
 } from "@chakra-ui/react";
 
 import style from "./Navbar.module.css";
@@ -129,7 +134,7 @@ export default function Navbar() {
           Recommended
           <Text>Courses</Text>
         </Text>
-        <Box>
+        <SimpleGrid columns={3}>
           <Card maxW="sm">
             <CardBody>
               <Image
@@ -138,30 +143,50 @@ export default function Navbar() {
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md">Living room Sofa</Heading>
-                <Text>
-                  This sofa is perfect for modern tropical spaces, baroque
-                  inspired spaces, earthy toned spaces and for people who love a
-                  chic design with a sprinkle of vintage design.
-                </Text>
+                <Heading size="md">UI & UX Design Training</Heading>
+                <Text>Bill Weinman</Text>
                 <Text color="blue.600" fontSize="2xl">
-                  $450
+                  2h 11min
                 </Text>
+                <Text>1,489,310 View</Text>
               </Stack>
             </CardBody>
-            <Divider />
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Button variant="solid" colorScheme="blue">
-                  Buy now
-                </Button>
-                <Button variant="ghost" colorScheme="blue">
-                  Add to cart
-                </Button>
-              </ButtonGroup>
-            </CardFooter>
           </Card>
-        </Box>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://img.freepik.com/premium-vector/set-mockups-smartphones-with-user-interface-mobile-application_451939-184.jpg?w=740"
+                // alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">UI & UX Design Training</Heading>
+                <Text>Bill Weinman</Text>
+                <Text color="blue.600" fontSize="2xl">
+                  2h 11min
+                </Text>
+                <Text>1,489,310 View</Text>
+              </Stack>
+            </CardBody>
+          </Card>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://img.freepik.com/premium-vector/set-mockups-smartphones-with-user-interface-mobile-application_451939-184.jpg?w=740"
+                // alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">UI & UX Design Training</Heading>
+                <Text>Bill Weinman</Text>
+                <Text color="blue.600" fontSize="2xl">
+                  2h 11min
+                </Text>
+                <Text>1,489,310 View</Text>
+              </Stack>
+            </CardBody>
+          </Card>
+        </SimpleGrid>
       </Box>
     </Box>
   );
