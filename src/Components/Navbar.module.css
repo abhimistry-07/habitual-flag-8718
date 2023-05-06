@@ -11,7 +11,8 @@
     margin-top: 30px;
 }
 
-.subupperPortion {
+.subupperPortion,
+.topCategoriesSection {
     width: 74%;
     margin: auto;
     /* border: 1px solid black; */
@@ -60,7 +61,8 @@
     /* font-weight: 900; */
 }
 
-.recommendedCourseSection {
+.recommendedCourseSection,
+.newCourseSection {
     width: 74%;
     /* background-color: aqua; */
     margin: auto;
@@ -74,6 +76,30 @@
     font-weight: bolder;
 }
 
+.midVideoPart {
+    margin-top: 100px;
+}
+
+.upperFooter {
+    /* position: absolute; */
+    left: 1px;
+    width: 1435px;
+    height: 366px;
+    background: #1F2437FF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}
+
+.lowerFooter {
+    /* position: absolute; */
+    left: 1px;
+    width: 1435px;
+    height: 67px;
+    background: #2A2B45FF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+
+}
 
 
 
