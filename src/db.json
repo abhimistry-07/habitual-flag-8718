@@ -1,0 +1,44 @@
+{
+  "topCatData": [
+    {
+      "id": 1,
+      "image": "https://img.icons8.com/?size=512&id=2778&format=png",
+      "title": "Development"
+    },
+    {
+      "id": 2,
+      "image": "https://img.icons8.com/?size=512&id=5bNLU6ys1X6y&format=png",
+      "title": "Business"
+    },
+    {
+      "id": 3,
+      "image": "https://img.icons8.com/?size=512&id=20884&format=png",
+      "title": "Marketing"
+    },
+    {
+      "id": 4,
+      "image": "https://img.icons8.com/?size=512&id=5376&format=png",
+      "title": "Photography"
+    },
+    {
+      "id": 5,
+      "image": "https://img.icons8.com/?size=512&id=EHtxO8ZmA602&format=png",
+      "title": "Music"
+    },
+    {
+      "id": 6,
+      "image": "https://img.icons8.com/?size=512&id=2799&format=png",
+      "title": "UI Design"
+    },
+    {
+      "id": 7,
+      "image": "https://img.icons8.com/?size=512&id=lBuqhXfGV2RT&format=png",
+      "title": "UX Design"
+    },
+    {
+      "id": 8,
+      "image": "https://img.icons8.com/?size=512&id=T2hlOs3PLcaY&format=png",
+      "title": "IT and Software"
+    }
+  ]
+}
