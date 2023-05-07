@@ -1,0 +1,14 @@
+.CoursesContainer {
+    background-color: hsl(300, 75%, 95%);
+   /* background-color: hsl(300, 47%, 85%); */
+    width: 100%;
+}
+
+.innerContainer {
+    width: 74%;
+    margin: auto;
+}
+
+.card{
+    text-align: center;
+}
