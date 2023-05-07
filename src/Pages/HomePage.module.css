@@ -1,0 +1,197 @@
+.upperPortion {
+    background-image: url("https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=829&q=80");
+    height: 760px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.logo {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 35px;
+    margin-top: 30px;
+}
+
+.subupperPortion,
+.topCategoriesSection {
+    width: 74%;
+    margin: auto;
+    /* border: 1px solid black; */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red, */
+}
+
+.tabName {
+    font-size: 12px;
+}
+
+.searchBarSection {
+    margin-top: 200px;
+}
+
+.searchBarText {
+    text-align: left;
+    font-size: 65px;
+    font-family: 'Epilogue', sans-serif;
+    line-height: 80px;
+}
+
+.worldWideDetails {
+    /* border: 5px solid black; */
+    height: 50px;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 150px;
+    margin-top: 100px;
+}
+
+.text1 {
+    color: rgb(62, 189, 91);
+    font-size: 13px;
+    font-weight: bold
+}
+
+.text2 {
+    font-family: 'Epilogue', sans-serif;
+    color: #765AB1FF;
+    font-size: 24px;
+    /* font-weight: 900; */
+}
+
+.recommendedCourseSection,
+.newCourseSection {
+    width: 74%;
+    /* background-color: aqua; */
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.text3 {
+    font-size: 65px;
+    font-family: 'Epilogue', sans-serif;
+    color: rgb(121, 87, 192);
+    font-weight: bolder;
+}
+
+.midVideoPart {
+    margin-top: 100px;
+}
+
+.upperFooter {
+    /* position: absolute; */
+    left: 1px;
+    width: 100%;
+    height: 366px;
+    background: #1F2437FF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}
+
+.lowerFooter {
+    /* position: absolute; */
+    left: 1px;
+    width: 100%;
+    height: 67px;
+    background: #2A2B45FF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}
+
+.ematlInput {
+    width: 330px;
+    height: 64px;
+    background: #292B41FF;
+    border-radius: 2px;
+}
+
+.ematlInputBtn {
+    width: 177px;
+    height: 63px;
+    background: #1F2437FF;
+    border-radius: 4px;
+    border: 1px solid rgb(69, 207, 69);
+}
+
+.lowerFooter {
+    margin-top: 5px;
+    border-radius: 0px;
+}
+
+.footerText {
+    top: 20px;
+    left: 173px;
+    font-size: 12px;
+    color: #565E6CFF;
+    margin: auto;
+    margin-left: 200px;
+    margin-top: 9px;
+
+}
+
+.slick-prev:before {
+    color: red;
+    background-color: black;
+    content: '←';
+}
+
+.slick-arrow,
+.slick-prev {
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+/* Button 2 */
+.button {
+    position: absolute;
+    top: 34px;
+    left: 1099px;
+    width: 149px;
+    height: 52px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter;
+    /* Body */
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFFFF;
+    /* white */
+    background: #424955FF;
+    /* neutral-650 */
+    opacity: 1;
+    border: none;
+    border-radius: 4px;
+    /* border-m */
+}
+
+/* Hover */
+.button:hover {
+    color: #FFFFFFFF;
+    /* white */
+    background: #323842FF;
+    /* neutral-700 */
+}
+
+/* Pressed */
+.button:hover:active {
+    color: #FFFFFFFF;
+    /* white */
+    background: #262A33FF;
+    /* neutral-750 */
+}
+
+/* Disabled */
+.button:disabled {
+    opacity: 0.4;
+}
