@@ -8,8 +8,10 @@ import {
   SimpleGrid,
   Image,
   Stack,
-  Heading,
+  Heading,Box
 } from "@chakra-ui/react";
+import SingleCoursePage from "./SingleCoursePage";
+import { Link } from "react-router-dom";
 
 export default function CoursesPage() {
   const [data, setData] = useState([]);
@@ -20,13 +22,17 @@ export default function CoursesPage() {
     setData(data);
   };
 
+//   const handleSinglePage = (id) => {
+//     <SingleCoursePage id={id} />;
+//   };
+
   useEffect(() => {
     AllCourses();
   }, []);
 
   return (
-    <div>
-      <div
+    <Box>
+      <Box
         className="navbarSection"
         style={{
           backgroundImage: `url(https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=829&q=80)`,
@@ -34,13 +40,13 @@ export default function CoursesPage() {
           backgroundSize: "100%",
         }}
       >
-        <div style={{ width: "74%", margin: "auto" }}>
+        <Box style={{ width: "74%", margin: "auto" }}>
           <Navbar />
-        </div>
-      </div>
-      <div className={style.CoursesContainer}>
-        <div className={style.innerContainer}>
-          <div style={{padding:"30px"}}>
+        </Box>
+      </Box>
+      <Box className={style.CoursesContainer}>
+        <Box className={style.innerContainer}>
+          <Box style={{ padding: "30px" }}>
             <SimpleGrid columns={2} spacing={4}>
               {data.map((item) => {
                 return (
@@ -63,18 +69,18 @@ export default function CoursesPage() {
                         fontSize={"md"}
                         color="green.400"
                         as={"b"}
-                        //   onClick={() => handleSinglePage(item.id)}
+                        // onClick={() => handleSinglePage(item.id)}
                       >
-                        More Details...
+                        <Link to={`/courses/${item.id}`}>More Details...</Link>
                       </Text>
                     </CardBody>
                   </Card>
                 );
               })}
             </SimpleGrid>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }
