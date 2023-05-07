@@ -1,32 +1,31 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Box, Text, Tabs, TabList, Tab, TabIndicator } from "@chakra-ui/react";
-// import { style } from "./Navbar.module.css";
+import style from "./Navbar.module.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 export default function Navbar() {
+  const { isAuth, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const NavigateToCourses = () => {
     navigate("/courses");
   };
 
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const handleLogOut = () => {
+    logOut();
+  };
+
   return (
-    <Box
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
+    <Box className={style.navbar}>
       <Box>
-        <Text
-          style={{
-            fontFamily: "Epilogue",
-            fontSize: "35px",
-            marginTop: "30px",
-          }}
-        >
-          fusion
+        <Text className={style.logo}>
+          <Link to={"/"}>fusion</Link>
         </Text>
       </Box>
       <Box
@@ -42,7 +41,6 @@ export default function Navbar() {
         >
           <TabList>
             <Tab fontSize={"myfontSize.sm"} onClick={NavigateToCourses}>
-              {/* COURSES */}
               <Link to={"/courses"}>COURSES</Link>
             </Tab>
             <Tab fontSize={"myfontSize.sm"}>TUTORIALS</Tab>
@@ -56,17 +54,6 @@ export default function Navbar() {
             bg="blue.500"
             borderRadius="1px"
           />
-          {/* <TabPanels>
-              <TabPanel>
-                <p>one!</p>
-              </TabPanel>
-              <TabPanel>
-                <p>two!</p>
-              </TabPanel>
-              <TabPanel>
-                <p>three!</p>
-              </TabPanel>
-            </TabPanels> */}
         </Tabs>
       </Box>
       <Box
@@ -76,7 +63,13 @@ export default function Navbar() {
           marginRight: "20px",
         }}
       >
-        <Text style={{ margin: "auto", marginRight: "50px" }}>LOG IN</Text>
+        <Text style={{ margin: "auto", marginRight: "50px" }} className="logInText">
+          {isAuth ? (
+            <Text onClick={handleLogOut}>Log out</Text>
+          ) : (
+            <Text onClick={handleLogin}>Login</Text>
+          )}
+        </Text>
         <Text style={{ margin: "auto" }}>JOIN FOR FREE</Text>
       </Box>
     </Box>
