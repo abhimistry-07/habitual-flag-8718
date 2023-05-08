@@ -9,15 +9,13 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
   Button,
   Avatar,
   HStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import style from "./Navbar.module.css";
 import { Link } from "react-router-dom";
@@ -97,7 +95,9 @@ export default function Navbar() {
                 <PopoverBody style={{ backgroundColor: "rgb(121, 87, 192)" }}>
                   <HStack>
                     <Avatar size="xs" src="https://bit.ly/broken-link" />
-                    <Link style={{fontSize:"20px"}} to={"/profile"}>Profile</Link>
+                    <Link style={{ fontSize: "20px" }} to={"/profile"}>
+                      Profile
+                    </Link>
                   </HStack>
                   <Button
                     colorScheme="green"
@@ -113,24 +113,6 @@ export default function Navbar() {
             <Text onClick={handleLogin}>Login</Text>
           )}
         </Text>
-
-        {/* <Text
-          style={{ margin: "auto", marginRight: "50px" }}
-          className="logInText"
-        >
-          {isAuth ? (
-            <Box className="dropdown">
-              <Text onClick={handleLogOut} className="dropbtn">
-                Log out
-              </Text>
-              <Box className="dropdown-content">
-                <Text>Profile</Text>
-              </Box>
-            </Box>
-          ) : (
-            <Text onClick={handleLogin}>Login</Text>
-          )}
-        </Text> */}
         <Text style={{ margin: "auto" }}>JOIN FOR FREE</Text>
       </Box>
     </Box>

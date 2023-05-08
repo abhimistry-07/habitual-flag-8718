@@ -25,8 +25,10 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { CheckIcon } from "@chakra-ui/icons";
 import Footer from "../Components/Footer";
+import { Spinner2 } from "../Components/Spinner";
 
 export default function SingleCoursePage() {
+  const [loading, setLoading] = useState(false);
   const { user_id } = useParams();
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,9 +36,11 @@ export default function SingleCoursePage() {
   let showtitle = "";
 
   const getData = async () => {
+    setLoading(true);
     const res = await fetch(`http://localhost:8080/courses?id=${user_id}`);
     const data = await res.json();
     setData(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -57,70 +61,81 @@ export default function SingleCoursePage() {
           <Navbar />
         </Box>
       </Box>
-      <Box className="Course">
-        {data.map((item) => {
-          const {
-            id,
-            image,
-            title,
-            instructor,
-            duration,
-            view,
-            description,
-            price,
-          } = item;
+      {loading ? (
+        <Box style={{ margin: "auto" }}>
+          <Box style={{ margin: "auto" }}>
+            <Spinner2 />
+          </Box>
+          <Text fontSize={40} color={"black"} style={{ margin: "auto" }}>
+            ...Loading
+          </Text>
+        </Box>
+      ) : (
+        <Box className="Course">
+          {data.map((item) => {
+            const {
+              id,
+              image,
+              title,
+              instructor,
+              duration,
+              view,
+              description,
+              price,
+            } = item;
 
-          showtitle = title;
-          showprice = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            showtitle = title;
+            showprice = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-          // setTitle(title);
-          return (
-            <Box key={id}>
-              <Card style={{ width: "80%", margin: "auto", padding: "50px" }}>
-                <Stack spacing={4}>
-                  <Box style={{ textAlign: "center", margin: "auto" }}>
-                    <Image
-                      src={image}
-                      style={{
-                        margin: "auto",
-                        marginBottom: "50px",
-                        width: "400px",
-                      }}
-                    />
-                  </Box>
-                  <Heading>{title}</Heading>
-                  <Text fontSize="xl" color="#765AB1FF">
-                    <Text as={"B"}>Instructor:- </Text> {instructor}
-                  </Text>
-                  <Text fontSize="xl" color="#765AB1FF">
-                    <Text as={"B"}>Course Duration:- </Text>
-                    {duration}
-                  </Text>
-                  <Text fontSize="xl" color="#765AB1FF">
-                    <Text as={"B"}> Views:- </Text>
-                    {view} views
-                  </Text>
-                  <Text fontSize="xl" color="#765AB1FF">
-                    <Text as={"B"}> Price:- </Text>₹{price}
-                  </Text>
-                  <Text fontSize="xl" color="#765AB1FF">
-                    <Text as={"B"}> About:- </Text>
-                    {description}
-                  </Text>
-                  <Button
-                    colorScheme="green"
-                    variant="outline"
-                    style={{ marginTop: "50px" }}
-                    onClick={onOpen}
-                  >
-                    Buy this course
-                  </Button>
-                </Stack>
-              </Card>
-            </Box>
-          );
-        })}
-      </Box>
+            // setTitle(title);
+            return (
+              <Box key={id}>
+                <Card style={{ width: "80%", margin: "auto", padding: "50px" }}>
+                  <Stack spacing={4}>
+                    <Box style={{ textAlign: "center", margin: "auto" }}>
+                      <Image
+                        src={image}
+                        style={{
+                          margin: "auto",
+                          marginBottom: "50px",
+                          width: "400px",
+                        }}
+                      />
+                    </Box>
+                    <Heading>{title}</Heading>
+                    <Text fontSize="xl" color="#765AB1FF">
+                      <Text as={"B"}>Instructor:- </Text> {instructor}
+                    </Text>
+                    <Text fontSize="xl" color="#765AB1FF">
+                      <Text as={"B"}>Course Duration:- </Text>
+                      {duration}
+                    </Text>
+                    <Text fontSize="xl" color="#765AB1FF">
+                      <Text as={"B"}> Views:- </Text>
+                      {view} views
+                    </Text>
+                    <Text fontSize="xl" color="#765AB1FF">
+                      <Text as={"B"}> Price:- </Text>₹{price}
+                    </Text>
+                    <Text fontSize="xl" color="#765AB1FF">
+                      <Text as={"B"}> About:- </Text>
+                      {description}
+                    </Text>
+                    <Button
+                      colorScheme="green"
+                      variant="outline"
+                      style={{ marginTop: "50px" }}
+                      onClick={onOpen}
+                    >
+                      Buy this course
+                    </Button>
+                  </Stack>
+                </Card>
+              </Box>
+            );
+          })}
+        </Box>
+      )}
       <Modal
         isCentered
         onClose={onClose}

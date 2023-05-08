@@ -50,12 +50,14 @@
 
 .text1 {
     color: rgb(62, 189, 91);
+    margin: auto;
     font-size: 13px;
     font-weight: bold
 }
 
 .text2 {
     font-family: 'Epilogue', sans-serif;
+    margin: auto;
     color: #765AB1FF;
     font-size: 24px;
     /* font-weight: 900; */
