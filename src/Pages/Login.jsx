@@ -2,18 +2,20 @@ import React, { useState, useContext, useEffect } from "react";
 import { Box, Button, Input, Text, FormControl } from "@chakra-ui/react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
-import { async } from "q";
 
 export default function LoginPage() {
-  const { isAuth, logIn, logOut } = useContext(AuthContext);
+  const { isAuth, logIn, logOut, personName, setPersonName } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [inpEmail, setinpEmail] = useState("");
   const [inpPassword, setinpPassword] = useState("");
   const [toggleLoginSignup, settoggleLoginSignup] = useState(false);
   const [isSignUp, setSignUp] = useState(false);
   const [credentials, setCredentials] = useState([]);
+  const [name, setName] = useState("");
 
-  console.log(isAuth, ">>>>>>>>>");
+  // console.log(isAuth, ">>>>>>>>>");
+  console.log(personName, ">>>>>>>");
 
   const getEmailandPasswordData = async () => {
     const res = await fetch(`http://localhost:8080/logIn`);
@@ -23,11 +25,15 @@ export default function LoginPage() {
 
   useEffect(() => {
     getEmailandPasswordData();
-  }, [toggleLoginSignup]);
+  }, [toggleLoginSignup, name]);
 
   if (isAuth) {
     <Navigate to={"/"} />;
   }
+
+  const myFunction = (val) => {
+    setPersonName(val);
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -37,11 +43,14 @@ export default function LoginPage() {
         credentials[i].email === inpEmail &&
         credentials[i].password === inpPassword
       ) {
+        console.log(credentials[i].name, "+++++");
         logIn();
+        myFunction(credentials[i].name);
         setSignUp(true);
         alert(`Succesfully Logedin`);
         setinpEmail("");
         setinpPassword("");
+        setName("");
         navigate("/");
         break;
       } else {
@@ -49,7 +58,7 @@ export default function LoginPage() {
           alert("Invalid Credentials");
           setinpEmail("");
           setinpPassword("");
-          //   console.log(count);
+          setName("");
         }
         count++;
       }
@@ -66,6 +75,7 @@ export default function LoginPage() {
       body: JSON.stringify({
         email: inpEmail,
         password: inpPassword,
+        name: name,
       }),
     });
     alert("Successfully Created Account, Kindly login");
@@ -96,6 +106,13 @@ export default function LoginPage() {
           </Link>
         </Box>
         <Box>
+          <Input
+            type="text"
+            placeholder="name"
+            value={name}
+            color={"black"}
+            onChange={(e) => setName(e.target.value)}
+          />
           <Input
             type="email"
             placeholder="email"

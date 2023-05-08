@@ -55,11 +55,11 @@ export default function HomePage() {
 
   // console.log(searchInput);
 
-  const recommendedCoursesSection = async () => {
-    const response = await fetch("http://localhost:8080/courses");
-    const data = await response.json();
-    setRecomendedCourseData(data);
-  };
+  // const recommendedCoursesSection = async () => {
+  //   const response = await fetch("http://localhost:8080/courses");
+  //   const data = await response.json();
+  //   setRecomendedCourseData(data);
+  // };
 
   const topCategoriesSection = async () => {
     const response = await fetch("http://localhost:8080/topCatData");
@@ -70,7 +70,7 @@ export default function HomePage() {
 
   useEffect(() => {
     topCategoriesSection();
-    recommendedCoursesSection();
+    // recommendedCoursesSection();
   }, []);
 
   return (
@@ -110,7 +110,7 @@ export default function HomePage() {
       {searchInput === "" ? (
         ""
       ) : (
-        <Box style={{width:"74%",margin:"auto" }} >
+        <Box style={{ width: "74%", margin: "auto" }}>
           <SearchFunctionality searchInput={searchInput} />
         </Box>
       )}
