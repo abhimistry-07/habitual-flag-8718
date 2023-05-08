@@ -36,17 +36,24 @@ import style from "./HomePage.module.css";
 
 import { SearchIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SingleCoursePage from "../Pages/SingleCoursePage";
 import Navbar from "../Components/Navbar";
-import AllRoutes from "../Routes/AllRoutes";
+import Footer from "../Components/Footer";
+import SearchFunctionality from "../Components/SearchFunctionality";
+// import MyCarousel from "../Components/Slider";
+// import AllRoutes from "../Routes/AllRoutes";
+// import Slider from "react-slick";
+// import SingleCoursePage from "../Pages/SingleCoursePage";
 
 export default function HomePage() {
   const [topCategoriesData, settopCategoriesSection] = useState([]);
 
   const [recommendedCoursesData, setRecomendedCourseData] = useState([]);
+
+  const [searchInput, setSearchInput] = useState("");
+
+  // console.log(searchInput);
 
   const recommendedCoursesSection = async () => {
     const response = await fetch("http://localhost:8080/courses");
@@ -59,60 +66,6 @@ export default function HomePage() {
     const data = await response.json();
     settopCategoriesSection(data);
     return data.meals;
-  };
-
-  const ListHeader = ({ children }) => {
-    return (
-      <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
-        {children}
-      </Text>
-    );
-  };
-
-  // class MySlider extends Component {
-  //   render() {
-  //     const settings = {
-  //       className: "center",
-  //       infinite: true,
-  //       centerPadding: "60px",
-  //       slidesToShow: 3,
-  //       swipeToSlide: false,
-  //       afterChange: function (index) {
-  //         console.log(
-  //           `Slider Changed to: ${
-  //             index + 1
-  //           },  background: #222; color: #bada55 `
-  //         );
-  //       },
-  //     };
-  //     return (
-  //       <Box>
-  //         <Slider {...settings}>
-  //           {recommendedCoursesData.map((item) => {
-  //             return (
-  //               <Card key={item.id} bg={"red.400"}>
-  //                 <CardBody>
-  //                   <Image src={item.image} borderRadius="lg" margin={"auto"} />
-  //                   <Stack mt="6" spacing="3">
-  //                     <Heading size="md">{item.title}</Heading>
-  //                     <Text>{item.instructor}</Text>
-  //                     <Text color="blue.600" fontSize="2xl">
-  //                       {item.duration}{" "}
-  //                     </Text>
-  //                     <Text>{item.view}</Text>
-  //                   </Stack>
-  //                 </CardBody>
-  //               </Card>
-  //             );
-  //           })}
-  //         </Slider>
-  //       </Box>
-  //     );
-  //   }
-  // }
-
-  const handleSinglePage = (id) => {
-    <SingleCoursePage id={id} />;
   };
 
   useEffect(() => {
@@ -141,6 +94,7 @@ export default function HomePage() {
                 width={"450px"}
                 color={"black"}
                 bg={"white"}
+                onChange={(e) => setSearchInput(e.target.value)}
               />
               <Button
                 colorScheme="green"
@@ -153,6 +107,13 @@ export default function HomePage() {
           </Box>
         </Box>
       </Box>
+      {searchInput === "" ? (
+        ""
+      ) : (
+        <Box style={{width:"74%",margin:"auto" }} >
+          <SearchFunctionality searchInput={searchInput} />
+        </Box>
+      )}
       <Box className={style.worldWideDetails}>
         <SimpleGrid columns={4} spacing={10}>
           <Card>
@@ -178,7 +139,7 @@ export default function HomePage() {
           Recommended
           <Text>Courses</Text>
         </Text>
-        <SimpleGrid columns={3}>
+        {/* <SimpleGrid columns={3}>
           {recommendedCoursesData.map((item) => {
             return (
               <Card key={item.id}>
@@ -204,10 +165,65 @@ export default function HomePage() {
               </Card>
             );
           })}
-        </SimpleGrid>
+        </SimpleGrid> */}
         {/* <Box>
-          <MySlider />
+          <MyCarousel recommendedCoursesData={recommendedCoursesData} />
         </Box> */}
+
+        <SimpleGrid columns={3} gap={6}>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                margin={"auto"}
+                src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/41/3b25f3874445ab9d6831dbd39d95a3/LowRes-Original-168621112.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=600&h=216&q=50&fit=fill"
+                // alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">Cybersecurity Framework</Heading>
+                <Text>Bill Weinman</Text>
+                <Text color="blue.600" fontSize="2xl">
+                  3 months
+                </Text>
+                <Text>72,632 View</Text>
+              </Stack>
+            </CardBody>
+          </Card>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/b8/7caade153743ebaf1309aee6cf07c6/AIforBusiness_fundamentals_coursera.png?auto=format%2Ccompress%2C%20enhance&dpr=1&w=600&h=216&fit=fill&q=50"
+                // alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">AI Fundamentals</Heading>
+                <Text>Dan Boneh</Text>
+                <Text color="blue.600" fontSize="2xl">
+                  3 Months
+                </Text>
+                <Text>1,489,310 View</Text>
+              </Stack>
+            </CardBody>
+          </Card>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/e8/988c2c9364474399749b5c391be93a/1200x600_certsResize_3.png?auto=format%2Ccompress%2C%20enhance&dpr=1&w=600&h=216&fit=fill&q=50"
+                // alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">Build Wireframes</Heading>
+                <Text>Bill Weinman</Text>
+                <Text color="blue.600" fontSize="2xl">
+                  2h 11min
+                </Text>
+                <Text>1,489,310 View</Text>
+              </Stack>
+            </CardBody>
+          </Card>
+        </SimpleGrid>
       </Box>
       <Box className={style.topCategoriesSection}>
         <Text className={style.text3} textAlign={"left"}>
@@ -237,7 +253,10 @@ export default function HomePage() {
       </Box>
       <Box className={style.midVideoPart}>
         <SimpleGrid columns={2}>
-          <Image src="https://app.visily.ai/projects/b9c1d17e-9922-4dc8-be73-5b0359ab46a3/boards/473708/elements/161325609" />
+          <Image
+            style={{ height: "664px" }}
+            src="https://img.freepik.com/free-photo/close-up-image-programer-working-his-desk-office_1098-18707.jpg?w=740&t=st=1683536623~exp=1683537223~hmac=1c762a4c966737f560636338e349df5c34ea21d4c8e2fbc885bdb3fb9ae5df12"
+          />
           <Box style={{ backgroundColor: "#765AB1FF" }}>
             <Box style={{ padding: "155px", textAlign: "left" }}>
               <Text className={style.text1}>SUCCESS</Text>
@@ -274,7 +293,7 @@ export default function HomePage() {
         <Text className={style.text3} textAlign={"left"}>
           New <br /> Courses
         </Text>
-        <SimpleGrid columns={3}>
+        <SimpleGrid columns={3} gap={6}>
           <Card maxW="sm">
             <CardBody>
               <Image
@@ -295,90 +314,41 @@ export default function HomePage() {
           <Card maxW="sm">
             <CardBody>
               <Image
-                src="https://img.freepik.com/premium-vector/set-mockups-smartphones-with-user-interface-mobile-application_451939-184.jpg?w=740"
+                src="https://img.freepik.com/free-photo/ai-nuclear-energy-background-future-innovation-disruptive-technology_53876-129783.jpg?size=626&ext=jpg&ga=GA1.2.192555866.1683199645&semt=ais"
                 // alt="Green double couch with wooden legs"
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md">UI & UX Design Training</Heading>
-                <Text>Bill Weinman</Text>
+                <Heading size="md">AI</Heading>
+                <Text>Tim Weinman</Text>
                 <Text color="blue.600" fontSize="2xl">
-                  2h 11min
+                  5 months
                 </Text>
-                <Text>1,489,310 View</Text>
+                <Text>2,589,000 View</Text>
               </Stack>
             </CardBody>
           </Card>
           <Card maxW="sm">
             <CardBody>
               <Image
-                src="https://img.freepik.com/premium-vector/set-mockups-smartphones-with-user-interface-mobile-application_451939-184.jpg?w=740"
+                src="https://img.freepik.com/premium-photo/various-computer-equipment-with-programming-code-screens-table-dark-room-cyber-security-concept-copy-space_236854-23136.jpg?size=626&ext=jpg&ga=GA1.1.192555866.1683199645&semt=ais"
                 // alt="Green double couch with wooden legs"
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md">UI & UX Design Training</Heading>
-                <Text>Bill Weinman</Text>
+                <Heading size="md">Back end developer</Heading>
+                <Text>Tom thomson</Text>
                 <Text color="blue.600" fontSize="2xl">
-                  2h 11min
+                  7 months
                 </Text>
-                <Text>1,489,310 View</Text>
+                <Text>1,954,310 View</Text>
               </Stack>
             </CardBody>
           </Card>
         </SimpleGrid>
       </Box>
       <Box className={style.footer}>
-        <Box className={style.upperFooter}>
-          <Container as={Stack} maxW={"6xl"} py={10}>
-            <SimpleGrid
-              templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
-              spacing={8}
-            >
-              <Stack spacing={6}>
-                <Text fontSize={"40px"} fontWeight={"bolder"}>
-                  fusion
-                </Text>
-              </Stack>
-              <Stack align={"flex-start"}>
-                <ListHeader>Company</ListHeader>
-                <Link href={"#"}>About us</Link>
-                <Link href={"#"}>Careers</Link>
-                <Link href={"#"}>Press</Link>
-                <Link href={"#"}>Blog</Link>
-                <Link href={"#"}>AffiLiates</Link>
-              </Stack>
-              <Stack align={"flex-start"}>
-                <ListHeader>Teaching</ListHeader>
-                <Link href={"#"}>Become a Teacher</Link>
-                <Link href={"#"}>Teaching Academy</Link>
-                <Link href={"#"}>Teacher Handbook</Link>
-                <Link href={"#"}>Partnerships</Link>
-              </Stack>
-              <Stack align={"flex-start"}>
-                <ListHeader>SUBSCRIBE TO NEWSLETTER</ListHeader>
-                <Stack direction={"row"}>
-                  <Input
-                    className={style.ematlInput}
-                    placeholder={"Enter your email"}
-                  />
-                  <Button
-                    className={style.ematlInputBtn}
-                    style={{ width: "200px", backgroundColor: "#1F2437FF" }}
-                  >
-                    Subscribe
-                  </Button>
-                </Stack>
-              </Stack>
-            </SimpleGrid>
-          </Container>
-        </Box>
-        <Box className={style.lowerFooter}>
-          <br />
-          <Text className={style.footerText} textAlign={"left"}>
-            2019 All Right Researved by Fusion Lab
-          </Text>
-        </Box>
+        <Footer />
       </Box>
     </Box>
   );
