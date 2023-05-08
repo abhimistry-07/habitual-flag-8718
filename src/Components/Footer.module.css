@@ -1,0 +1,51 @@
+
+
+
+.upperFooter {
+    left: 1px;
+    width: 100%;
+    height: 366px;
+    background: #1F2437FF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}
+
+.lowerFooter {
+    /* position: absolute; */
+    left: 1px;
+    width: 100%;
+    height: 67px;
+    background: #2A2B45FF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}
+
+.ematlInput {
+    width: 330px;
+    height: 64px;
+    background: #292B41FF;
+    border-radius: 2px;
+}
+
+.ematlInputBtn {
+    width: 177px;
+    height: 63px;
+    background: #1F2437FF;
+    border-radius: 4px;
+    border: 1px solid rgb(69, 207, 69);
+}
+
+.lowerFooter {
+    margin-top: 5px;
+    border-radius: 0px;
+}
+
+.footerText {
+    top: 20px;
+    left: 173px;
+    font-size: 12px;
+    color: #565E6CFF;
+    margin: auto;
+    margin-left: 200px;
+    margin-top: 9px;
+}

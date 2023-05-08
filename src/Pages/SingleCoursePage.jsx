@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { CheckIcon } from "@chakra-ui/icons";
+import Footer from "../Components/Footer";
 
 export default function SingleCoursePage() {
   const { user_id } = useParams();
@@ -202,10 +203,12 @@ export default function SingleCoursePage() {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            {/* <Button variant="ghost">Secondary Action</Button> */}
           </ModalFooter>
         </ModalContent>
       </Modal>
+      <Box className={"footer"}>
+        <Footer />
+      </Box>
     </Box>
   );
 }
