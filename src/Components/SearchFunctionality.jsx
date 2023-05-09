@@ -16,7 +16,7 @@ export default function SearchFunctionality({ searchInput }) {
 
   const fetchAndRenderData = async () => {
     // setLoading(true);
-    const res = await fetch(`http://localhost:8080/courses?q=${searchInput}`);
+    const res = await fetch(`https://fusion-ltg2.onrender.com/courses?q=${searchInput}`);
     const resdata = await res.json();
     setData(resdata);
     // setLoading(false);

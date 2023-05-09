@@ -56,13 +56,13 @@ export default function HomePage() {
   // console.log(searchInput);
 
   // const recommendedCoursesSection = async () => {
-  //   const response = await fetch("http://localhost:8080/courses");
+  //   const response = await fetch("https://fusion-ltg2.onrender.com/courses");
   //   const data = await response.json();
   //   setRecomendedCourseData(data);
   // };
 
   const topCategoriesSection = async () => {
-    const response = await fetch("http://localhost:8080/topCatData");
+    const response = await fetch("https://fusion-ltg2.onrender.com/topCatData");
     const data = await response.json();
     settopCategoriesSection(data);
     return data.meals;

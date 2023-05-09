@@ -37,7 +37,7 @@ export default function SingleCoursePage() {
 
   const getData = async () => {
     setLoading(true);
-    const res = await fetch(`http://localhost:8080/courses?id=${user_id}`);
+    const res = await fetch(`https://fusion-ltg2.onrender.com/courses?id=${user_id}`);
     const data = await res.json();
     setData(data);
     setLoading(false);
