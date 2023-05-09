@@ -22,7 +22,7 @@ export default function CoursesPage() {
 
   const AllCourses = async () => {
     setLoading(true);
-    const response = await fetch("http://localhost:8080/courses");
+    const response = await fetch("https://fusion-ltg2.onrender.com/courses");
     const data = await response.json();
     setData(data);
     setLoading(false);

@@ -18,7 +18,7 @@ export default function LoginPage() {
   console.log(personName, ">>>>>>>");
 
   const getEmailandPasswordData = async () => {
-    const res = await fetch(`http://localhost:8080/logIn`);
+    const res = await fetch(`https://fusion-ltg2.onrender.com/logIn`);
     const data = await res.json();
     setCredentials(data);
   };
@@ -67,7 +67,7 @@ export default function LoginPage() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:8080/logIn`, {
+    await fetch(`https://fusion-ltg2.onrender.com/logIn`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
